@@ -38,6 +38,7 @@ Route::get('/greetings', function () {
 
 Route::get('/classes',[ClassController::class,'index']);
 Route::get('/class/{id}',[ClassController::class,'show']);
+
 Route::resource('rooms',RoomController::class);
 Route::get('/rooms/{room}/edit',[RoomController::class,'edit'])->name('rooms.edit');
 Route::get('/rooms/{room}',[RoomController::class,'update'])->name('rooms.update');
@@ -49,3 +50,6 @@ Route::get('/rooms/{room}',[RoomController::class,'update'])->name('rooms.update
 Route::resource('foods',FoodController::class);
 Route::get('/foods/{food}/edit',[FoodController::class,'edit'])->name('foods.edit');
 Route::get('/foods/{food}',[FoodController::class,'update'])->name('foods.update');
+
+Route::get('/order',[FoodController::class,'order']);
+Route::get('/payment',[FoodController::class,'payment']);

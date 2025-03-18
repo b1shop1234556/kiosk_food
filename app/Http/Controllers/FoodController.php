@@ -105,5 +105,15 @@ class FoodController extends Controller
         return redirect()->route('foods.orderList')->with('success', 'Food Delete Successfully');
         //
     }
+
+    public function order()
+    {
+        return view('foods.editOrder');
+    }
+
+    public function payment()
+    {
+        return view('foods.payment');
+    }
 }
 
