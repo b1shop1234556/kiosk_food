@@ -53,3 +53,4 @@ Route::get('/foods/{food}',[FoodController::class,'update'])->name('foods.update
 
 Route::get('/order',[FoodController::class,'order']);
 Route::get('/payment',[FoodController::class,'payment']);
+Route::get('/menu',[FoodController::class,'menu']);

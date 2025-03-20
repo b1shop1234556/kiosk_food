@@ -115,5 +115,10 @@ class FoodController extends Controller
     {
         return view('foods.payment');
     }
+
+    public function menu()
+    {
+        return view('foods.menu');
+    }
 }
 
