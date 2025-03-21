@@ -12,7 +12,8 @@ class BundlesController extends Controller
      */
     public function index()
     {
-        //
+        $bundles = Bundles::all();  
+        return view('bundles.index', compact('bundles'));
     }
 
     /**
@@ -20,7 +21,7 @@ class BundlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('bundles.create');
     }
 
     /**
@@ -28,38 +29,58 @@ class BundlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'bundle_meal_name' => 'required|unique:bundles|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'bundle_image' => 'required|string',
+        ]);
+    
+        Bundles::create($validated);
+    
+        return redirect()->route('bundles.index')->with('success', 'Bundle created successfully.');
     }
-
+    
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Bundles $bundle)
     {
-        //
+        return view('bundles.show', compact('bundle'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Bundles $bundle)
     {
-        //
+        return view('bundles.edit', compact('bundle'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Bundles $bundle)
     {
-        //
+        $validated = $request->validate([
+            'bundle_meal_name' => 'required|string|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'bundle_image' => 'required|string',
+        ]);
+
+        $bundle->update($validated);
+    
+        return redirect()->route('bundles.index')->with('success', 'Bundle updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Bundles $bundle)
     {
-        //
+        $bundle->delete();
+
+        return redirect()->route('bundles.index')->with('success', 'Bundle deleted successfully.');
     }
 }

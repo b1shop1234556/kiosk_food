@@ -12,7 +12,8 @@ class VouchersController extends Controller
      */
     public function index()
     {
-        //
+        $vouchers = Vouchers::all();  
+        return view('vouchers.index', compact('vouchers')); 
     }
 
     /**
@@ -20,7 +21,7 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        //
+        return view('vouchers.create');
     }
 
     /**
@@ -28,38 +29,56 @@ class VouchersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'code' => 'required|unique:vouchers|max:255',
+            'discount' => 'required|numeric|min:0',
+            'expiry_date' => 'required|date',
+        ]);
+    
+        Vouchers::create($validated);
+    
+        return redirect()->route('vouchers.index')->with('success', 'Voucher created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vouchers $voucher)
     {
-        //
+        return view('vouchers.show', compact('voucher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Vouchers $voucher)
     {
-        //
+        return view('vouchers.edit', compact('voucher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Vouchers $voucher)
     {
-        //
+        $validated = $request->validate([
+            'code' => 'required|max:255|unique:vouchers,code,' . $voucher->id,
+            'discount' => 'required|numeric|min:0',
+            'expiry_date' => 'required|date',
+        ]);
+    
+        $voucher->update($validated);
+    
+        return redirect()->route('vouchers.index')->with('success', 'Voucher updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Vouchers $voucher)
     {
-        //
+        $voucher->delete();
+    
+        return redirect()->route('vouchers.index')->with('success', 'Voucher deleted successfully.');
     }
 }

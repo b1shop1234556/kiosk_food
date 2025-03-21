@@ -12,7 +12,8 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transactions::all();  
+        return view('transactions.index', compact('transactions')); 
     }
 
     /**
@@ -20,7 +21,7 @@ class TransactionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
@@ -28,38 +29,56 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'amount' => 'required|numeric',
+            'type' => 'required|string',
+            'status' => 'required|string',
+        ]);
+    
+        Transactions::create($validated);
+    
+        return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Transactions $transaction)
     {
-        //
+        return view('transactions.show', compact('transaction'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Transactions $transaction)
     {
-        //
+        return view('transactions.edit', compact('transaction'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Transactions $transaction)
     {
-        //
+        $validated = $request->validate([
+            'amount' => 'required|numeric',
+            'type' => 'required|string',
+            'status' => 'required|string',
+        ]);
+    
+        $transaction->update($validated);
+    
+        return redirect()->route('transactions.index')->with('success', 'Transaction updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Transactions $transaction)
     {
-        //
+        $transaction->delete();
+    
+        return redirect()->route('transactions.index')->with('success', 'Transaction deleted successfully.');
     }
 }

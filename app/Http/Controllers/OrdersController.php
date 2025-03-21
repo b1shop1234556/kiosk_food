@@ -12,7 +12,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Orders::all();
+        return view('orders.index', compact('orders'));
     }
 
     /**
@@ -20,7 +21,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
@@ -28,38 +29,59 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'customer_id' => 'required|integer',
+            'voucher_id' => 'nullable|integer',
+            'order_date' => 'required|date',
+            'total_price' => 'required|numeric',
+            'status' => 'required|string|max:255',
+        ]);
+
+        Orders::create($validated);
+
+        return redirect()->route('orders.index')->with('success', 'Order created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Orders $order)
     {
-        //
+        return view('orders.show', compact('order'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Orders $order)
     {
-        //
+        return view('orders.edit', compact('order'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Orders $order)
     {
-        //
+        $validated = $request->validate([
+            'customer_id' => 'required|integer',
+            'voucher_id' => 'nullable|integer',
+            'order_date' => 'required|date',
+            'total_price' => 'required|numeric',
+            'status' => 'required|string|max:255',
+        ]);
+
+        $order->update($validated);
+
+        return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orders $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
 }

@@ -12,7 +12,8 @@ class OrderitemsController extends Controller
      */
     public function index()
     {
-        //
+        $orderItems = Orderitems::all();
+        return view('orderitems.index', compact('orderItems'));
     }
 
     /**
@@ -20,7 +21,7 @@ class OrderitemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('orderitems.create');
     }
 
     /**
@@ -28,38 +29,58 @@ class OrderitemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'order_id' => 'required|string|max:255',
+            'menu_item_id' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:1',
+            'subtotal' => 'required|numeric|min:0',
+        ]);
+
+        Orderitems::create($validated);
+
+        return redirect()->route('orderitems.index')->with('success', 'Order Item Created Successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Orderitems $orderitem)
     {
-        //
+        return view('orderitems.show', compact('orderitem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Orderitems $orderitem)
     {
-        //
+        return view('orderitems.edit', compact('orderitem'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Orderitems $orderitem)
     {
-        //
+        $validated = $request->validate([
+            'order_id' => 'required|string|max:255',
+            'menu_item_id' => 'required|string|max:255',
+            'quantity' => 'required|integer|min:1',
+            'subtotal' => 'required|numeric|min:0',
+        ]);
+
+        $orderitem->update($validated);
+
+        return redirect()->route('orderitems.index')->with('success', 'Order Item Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orderitems $orderitem)
     {
-        //
+        $orderitem->delete();
+
+        return redirect()->route('orderitems.index')->with('success', 'Order Item Deleted Successfully');
     }
 }
