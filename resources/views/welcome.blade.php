@@ -115,7 +115,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-                                <a href="{{ url('/foods/create') }}" class="btn btn-danger btn-block" style="white-space: normal;">
+                                <a href="{{ url('/menus/create') }}" class="btn btn-danger btn-block" style="white-space: normal;">
                                 <i class="icon-twitter"></i>    Member Login
                                 </a>
                             </div>

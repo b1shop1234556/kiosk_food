@@ -13,7 +13,7 @@ class MenusController extends Controller
     public function index()
     {
         $menus = Menus::all();  
-        return view('menus.index', compact('menus')); 
+        return view('menus.menu', compact('menus')); 
     }
 
     /**
@@ -21,7 +21,7 @@ class MenusController extends Controller
      */
     public function create()
     {
-        return view('menus.create');
+        return view('menus.createOrder');
     }
 
     /**
@@ -39,7 +39,7 @@ class MenusController extends Controller
     
         Menus::create($validated);
     
-        return redirect()->route('menus.index')->with('success', 'Menu item created successfully.');
+        return redirect()->route('menus.orderList')->with('success', 'Menu item created successfully.');
     }
 
     /**
@@ -55,7 +55,7 @@ class MenusController extends Controller
      */
     public function edit(Menus $menu)
     {
-        return view('menus.edit', compact('menu'));
+        return view('menus.editOrder', compact('menu'));
     }
 
     /**
@@ -73,7 +73,7 @@ class MenusController extends Controller
     
         $menu->update($validated);
     
-        return redirect()->route('menus.index')->with('success', 'Menu item updated successfully.');
+        return redirect()->route('menus.orderList')->with('success', 'Menu item updated successfully.');
     }
 
     /**
@@ -83,6 +83,22 @@ class MenusController extends Controller
     {
         $menu->delete();
     
-        return redirect()->route('menus.index')->with('success', 'Menu item deleted successfully.');
+        return redirect()->route('menus.orderList')->with('success', 'Menu item deleted successfully.');
+    }
+
+    public function order()
+    {
+        return view('menus.editOrder');
+    }
+
+    public function payment()
+    {
+        return view('menus.payment');
+    }
+
+    public function menu()
+    {
+        $menus = Menus::all();  
+        return view('menus.menu', compact('menus')); 
     }
 }

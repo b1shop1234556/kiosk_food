@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\MenusController;
 // use App\Models\Task;
 
 Route::get('/', function () {
@@ -54,3 +55,12 @@ Route::get('/foods/{food}',[FoodController::class,'update'])->name('foods.update
 Route::get('/order',[FoodController::class,'order']);
 Route::get('/payment',[FoodController::class,'payment']);
 Route::get('/menu',[FoodController::class,'menu']);
+
+Route::get('/menu', [FoodController::class, 'index'])->name('menu');
+
+Route::resource('menus',MenusController::class);
+Route::get('/menus', [MenuItemController::class, 'index']);
+
+Route::get('/order',[MenusController::class,'order']);
+Route::get('/payment',[MenusController::class,'payment']);
+Route::get('/menu',[MenusController::class,'menu']);
