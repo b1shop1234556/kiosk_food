@@ -101,4 +101,5 @@ class MenusController extends Controller
         $menus = Menus::all();  
         return view('menus.menu', compact('menus')); 
     }
+    
 }

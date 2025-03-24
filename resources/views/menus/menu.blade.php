@@ -35,11 +35,7 @@
         <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome, Dionece</h1>
         <div class="flex space-x-2">
             <a href="{{ url('/order') }}" class="bg-red-500 px-2 py-1 rounded-lg font-semibold flex items-center">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm3 2a1 1 0 011 1v6a1 1 0 01-2 0V6a1 1 0 011-1zm4 0a1 1 0 011 1v6a1 1 0 01-2 0V6a1 1 0 011-1z" />
-            </svg> -->
             Order History
-            <!-- Home -->
             </a>
             <a href="/" class="bg-yellow-400 px-2 py-1 rounded-lg font-semibold flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -47,8 +43,6 @@
             </svg>
             </a>
         </div>
-        <!-- <button class="bg-yellow-400 px-2 py-1 rounded-lg font-semibold">Order History</button>
-        <button class="bg-yellow-400 px-2 py-1 rounded-lg font-semibold">Order History</button> -->
     </nav>
     
     <div class="flex flex-1">
@@ -98,6 +92,7 @@
                         <h3 class="font-semibold text-lg">{{ $menu->name }}</h3>
                         <p class="text-gray-600 text-sm">{{ $menu->description }}</p>
                         <p class="text-red-500 font-bold text-lg">₱{{ number_format($menu->price, 2) }}</p>
+                       
                         <a href="{{ url('/order') }}" class="block bg-yellow-500 mt-4 px-4 py-2 rounded-md text-white font-semibold text-center hover:bg-red-600">Add to Cart</a>
                     </div>
                 @endforeach
