@@ -106,37 +106,30 @@
         <div class="container">
             <div class="row justify-content-center">
                 <form class="form-signin mg-btm">
-                    <div class="social-box text-center">
-                        <div class="row mg-btm">
-                            <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-                                <a href="{{ url('/menus/create')}}" class="btn btn-danger btn-block" style="white-space: normal;">
-                                <i class="icon-facebook"></i>    Order as Guest
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-                                <a href="{{ url('/logins')}}" class="btn btn-danger btn-block" style="white-space: normal;">
-                                <i class="icon-twitter"></i>    Member Login
-                                </a>
-                            </div>
-                        </div>
+                    @csrf
+                    <div class="heading-desc text-center">
+                        <h2>Login</h2>
+                        <p>Please enter your credentials to log in.</p>
                     </div>
-                    <div class="social-box text-center">	
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <p class="btn btn-block" style="white-space: normal;">
-                                <i class="icon-twitter"></i> Not yet a member? Sign up with us today!
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-                                <a href="{{ url('/signups')}}" class="btn btn-danger btn-block" style="white-space: normal;">
-                                <i class="icon-twitter"></i>    Sign up Now
-                                </a>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <a class="btn btn-lg btn-primary btn-block" type="button" href="{{ url('/menus/create') }}">Login</a>
+                    <div class="text-center mt-3">
+                        <a >Forgot your password?</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>Not a member? <a>Sign up now</a></p>
                     </div>
                 </form>
             </div>

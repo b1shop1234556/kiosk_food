@@ -6,36 +6,36 @@
     <title>Food Ordering</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    function filterMenu(category) {
-        // Filter menu items based on category
-        document.querySelectorAll('.food-card').forEach(card => {
-            card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-        });
+        function filterMenu(category) {
+            document.querySelectorAll('.food-card').forEach(card => {
+                card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+            });
 
-        // Remove active class from all buttons
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.classList.remove('bg-yellow-900', 'text-white'); // Remove highlight
-            btn.classList.add('bg-yellow-700'); // Reset default color
-        });
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-yellow-900', 'text-white'); // Remove highlight
+                btn.classList.add('bg-yellow-700'); // Reset default color
+            });
 
-        // Add active class to the selected button
-        const activeButton = document.querySelector(`[data-category-btn="${category}"]`);
-        if (activeButton) {
-            activeButton.classList.add('bg-yellow-900', 'text-white'); // Highlight selection
-            activeButton.classList.remove('bg-yellow-700'); // Remove default color
+            const activeButton = document.querySelector(`[data-category-btn="${category}"]`);
+            if (activeButton) {
+                activeButton.classList.add('bg-yellow-900', 'text-white'); // Highlight selection
+                activeButton.classList.remove('bg-yellow-700'); // Remove default color
+            }
         }
-    }
-</script>
+    </script>
 
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     
      <!-- Header -->
      <nav class="bg-blue-100 w-full p-4 shadow-md flex justify-between items-center text-white">
-        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome, Dionece</h1>
+        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome</h1>
         <div class="flex space-x-2">
-            <a href="{{ url('/order') }}" class="bg-red-500 px-2 py-1 rounded-lg font-semibold flex items-center">
-            Order History
+            <a id="order-history" href="{{ url('/order') }}" class="bg-red-500 px-2 py-1 rounded-lg font-semibold flex items-center relative">
+                Order
+                <span id="cart-count"  class="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full transform translate-x-1/2 -translate-y-1/2">
+                    {{ session('cart') ? count(session('cart')) : 0 }}
+                </span>
             </a>
             <a href="/" class="bg-yellow-400 px-2 py-1 rounded-lg font-semibold flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -47,58 +47,109 @@
     
     <div class="flex flex-1">
         <!-- Sidebar Navigation -->
+        <!-- Sidebar Navigation -->
         <aside class="w-64 bg-yellow-600 text-white p-6 min-h-screen mt-1">
             <h2 class="text-2xl font-bold mb-4">Categories</h2>
             <nav class="space-y-2">
+                <!-- Dynamic category buttons -->
                 <button data-category-btn="all" onclick="filterMenu('all')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
                     <img src="/remove.png" alt="All" class="h-10 w-15 mr-2"> All
                 </button>
-                <button data-category-btn="breakfast" onclick="filterMenu('breakfast')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/breakfast.png" alt="Breakfast" class="h-10 w-15 mr-2"> Breakfast
-                </button>
-                <button data-category-btn="burgers" onclick="filterMenu('burgers')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/Burgers.png" alt="Burgers" class="h-10 w-15 mr-2"> Burgers
-                </button>
-                <button data-category-btn="chickenjoy" onclick="filterMenu('chickenjoy')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/chickenjoy.png" alt="Chickenjoy" class="h-10 w-15 mr-2"> Chickenjoy
-                </button>
-                <button data-category-btn="jollyhotdog" onclick="filterMenu('jollyhotdog')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/hotdog.png" alt="Jolly Hotdog" class="h-10 w-15 mr-2"> Jolly Hotdog
-                </button>
-                <button data-category-btn="spaghetti" onclick="filterMenu('spaghetti')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/jolly.png" alt="Jolly Spaghetti" class="h-10 w-15 mr-2"> Jolly Spaghetti
-                </button>
-                <button data-category-btn="burgersteak" onclick="filterMenu('burgersteak')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/steak.png" alt="Burger Steak" class="h-10 w-15 mr-2"> Burger Steak
-                </button>
-                <button data-category-btn="beverages" onclick="filterMenu('beverages')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/cokess.png" alt="Beverages" class="h-10 w-15 mr-2"> Beverages
-                </button>
-                <button data-category-btn="desserts" onclick="filterMenu('desserts')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/Peach.png" alt="Desserts" class="h-10 w-15 mr-2"> Desserts
-                </button>
-                <button data-category-btn="palabok" onclick="filterMenu('palabok')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
-                    <img src="/palabok.png" alt="Palabok" class="h-10 w-15 mr-2"> Palabok
-                </button>
+                @foreach($categories as $category)
+                    <button data-category-btn="{{ strtolower($category->category) }}" onclick="filterMenu('{{ strtolower($category->category) }}')" class="category-btn w-full px-4 py-2 bg-yellow-700 rounded-lg flex items-center">
+                        <img src="/{{ strtolower($category->category) }}.png" alt="{{ $category->category }}" class="h-10 w-15 mr-2"> {{ ucfirst($category->category) }}
+                    </button>
+                @endforeach
             </nav>
         </aside>
-        
-        <!-- Main Content -->
+
         <main class="flex-1 p-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                @foreach ($menus as $menu)
-                    <div class="food-card bg-white p-4 rounded-lg shadow-lg" data-category="{{ $menu->category }}">
-                        <img src="{{ $menu->menu_image }}" alt="{{ $menu->name }}" class="w-full h-40 object-cover rounded-md mb-4">
-                        <h3 class="font-semibold text-lg">{{ $menu->name }}</h3>
-                        <p class="text-gray-600 text-sm">{{ $menu->description }}</p>
-                        <p class="text-red-500 font-bold text-lg">₱{{ number_format($menu->price, 2) }}</p>
-                       
-                        <a href="{{ url('/order') }}" class="block bg-yellow-500 mt-4 px-4 py-2 rounded-md text-white font-semibold text-center hover:bg-red-600">Add to Cart</a>
-                    </div>
-                @endforeach
+            @foreach ($menus as $menu)
+                <div class="food-card bg-white p-4 rounded-lg shadow-lg relative" data-category="{{ $menu->category }}">
+                <img src="{{ asset($menu->menu_image) }}" 
+                    alt="{{ $menu->name }}" 
+                    class="food-image w-full h-40 object-cover rounded-md mb-4">
+
+                <h3 class="font-semibold text-lg">{{ $menu->name }}</h3>
+                <p class="text-gray-600 text-sm">{{ $menu->description }}</p>
+                <p class="text-red-500 font-bold text-lg">₱{{ number_format($menu->price, 2) }}</p>
+
+                <form action="{{ url('/cart/add', $menu->menu_item_id ) }}" method="POST" onsubmit="return checkDuplicateOrder(event, '{{ $menu->menu_item_id }}')">
+                    @csrf
+                    <button type="submit"
+                        onclick="addToCart(event, '{{ asset($menu->menu_image) }}')" 
+                        @click.prevent="
+                        showFlyImage = true;
+                        setTimeout(() => showFlyImage = false, 700);
+                        $event.target.closest('.food-card').querySelector('form').submit();
+                        "
+                        class="block bg-yellow-500 mt-4 px-4 py-2 rounded-md text-white font-semibold text-center hover:bg-red-600">
+                    Add to Cart
+                    </button>
+                </form>
+
+                </div>
+            @endforeach
             </div>
         </main>
+
+        <script>
+            function checkDuplicateOrder(event, menuItemId) {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                if (cartItems.includes(menuItemId)) {
+                    showModal('This item is already in your cart.');
+                    event.preventDefault();
+                    return false;
+                }
+                cartItems.push(menuItemId);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            return true;
+            }
+        </script>
     </div>
+
+    <script>
+        function addToCart(event, imageUrl) {
+            let cartIcon = document.getElementById('order-history');
+
+            let floatingImage = document.createElement('img');
+            floatingImage.src = imageUrl;
+            floatingImage.className = 'floating-img';
+            floatingImage.style.position = 'fixed';
+            floatingImage.style.width = '200px';
+            floatingImage.style.height = '200px';
+            floatingImage.style.borderRadius = '50%';
+            floatingImage.style.zIndex = '1000';
+            floatingImage.style.transition = 'all 0.7s ease-in-out';
+
+            document.body.appendChild(floatingImage);
+
+            let rect = event.target.getBoundingClientRect();
+            floatingImage.style.left = `${rect.left + window.scrollX}px`;
+            floatingImage.style.top = `${rect.top + window.scrollY}px`;
+
+            let cartRect = cartIcon.getBoundingClientRect();
+            
+            setTimeout(() => {
+                floatingImage.style.transform = `translate(${cartRect.left - rect.left}px, ${cartRect.top - rect.top}px) scale(0.3)`;
+                floatingImage.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => document.body.removeChild(floatingImage), 700);
+
+            // Send AJAX request to Laravel to add item to cart
+            fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ menu_item_id: event.target.getAttribute('data-id') })
+            }).then(response => response.json())
+            .then(data => console.log('Item added:', data));
+        }
+    </script>
     
     <!-- Footer -->
     <footer class="bg-red-500 text-white w-full mt-1 p-8 text-center">

@@ -10,14 +10,10 @@
 
     <!-- Header -->
     <nav class="bg-blue-100 w-full p-4 shadow-md flex justify-between items-center text-white">
-        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome, Dionece</h1>
+        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome</h1>
         <div class="flex space-x-2">
             <a href="{{ url('/order') }}" class="bg-red-500 px-2 py-1 rounded-lg font-semibold flex items-center">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm3 2a1 1 0 011 1v6a1 1 0 01-2 0V6a1 1 0 011-1zm4 0a1 1 0 011 1v6a1 1 0 01-2 0V6a1 1 0 011-1z" />
-            </svg> -->
             Order History
-            <!-- Home -->
             </a>
             <a href="/" class="bg-yellow-400 px-2 py-1 rounded-lg font-semibold flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -36,62 +32,6 @@
         <a  href="{{ url('/menu') }}" class="bg-yellow-500 mt-6 px-6 py-3 rounded-full font-semibold text-white hover:bg-red-700 transition duration-300">Order Now</a>
     </section>
 
-    <!-- New Section with Circular Images and Options -->
-    <!-- <div id="order-options" class="mt-10 text-center w-full">
-        <div class="flex justify-center space-x-12 px-4">
- 
-            <div class="p-8 rounded-lg text-center transition duration-300 hover:scale-110 transform">
-                <img src="/pickup.png" alt="Order & Pick Up" class="w-50 h-50 object-cover rounded-full mb-4 mx-auto">
-                <h4 class="font-semibold text-xl mb-2">Order & Pick Up</h4>
-            </div>
-
- 
-            <div class="p-8 rounded-lg text-center transition duration-300 hover:scale-110 transform">
-                <img src="/contact.png" alt="Download the App" class="w-50 h-50 object-cover rounded-full mb-4 mx-auto">
-                <h4 class="font-semibold text-xl mb-2">Download the App</h4>
-            </div>
-
-        
-            <div class="p-8 rounded-lg text-center transition duration-300 hover:scale-110 transform">
-                <img src="/telephone.png" alt="#87000" class="w-50 h-50 object-cover rounded-full mb-4 mx-auto">
-                <h4 class="font-semibold text-xl mb-2">#87000</h4>
-            </div>
-        </div>
-      
-    </div> -->
-
-    
-   
-    <!-- <div class="mt-6 items-center flex flex-col">
-        <h3 class="text-3xl font-semibold mb-8">Exclusive Bundles</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl p-5">
-            <div class="flex flex-col items-center w-32">
-                <div class="bg-white p-4 shadow-md rounded-full text-center w-32 h-32 flex flex-col items-center justify-center">
-                    <img src="/meal1.png" alt="Food Item" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="mt-2 font-semibold text-sm md:text-base text-center">Bundles Meal 1</h3>
-            </div>
-            <div class="flex flex-col items-center w-32">
-                <div class="bg-white p-4 shadow-md rounded-full text-center w-32 h-32 flex flex-col items-center justify-center">
-                    <img src="/meal2.png" alt="Food Item" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="mt-2 font-semibold text-sm md:text-base text-center">Bundles Meal 2</h3>
-            </div>
-            <div class="flex flex-col items-center w-32">
-                <div class="bg-white p-4 shadow-md rounded-full text-center w-32 h-32 flex flex-col items-center justify-center">
-                    <img src="/meal3.png" alt="Food Item" class="w-50 h-50 object-cover rounded-full">
-                </div>
-                <h3 class="mt-2 font-semibold text-sm md:text-base text-center">Bundles Meal 3</h3>
-            </div>
-            <div class="flex flex-col items-center w-32">
-                <div class="bg-white p-4 shadow-md rounded-full text-center w-32 h-32 flex flex-col items-center justify-center">
-                    <img src="/meal4.png" alt="Food Item" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="mt-2 font-semibold text-sm md:text-base text-center">Bundles Meal 4</h3>
-            </div>
-        </div>
-        <a href="#categories" class="bg-yellow-500 mt-6 px-6 py-3 rounded-full font-semibold text-white hover:bg-red-700 transition duration-300">View All Bundles</a>
-    </div> -->
     <!-- Exclusive Bundles Section -->
     <div id="exclusive-bundles" class="mt-12 text-center w-full">
         <h3 class="text-3xl font-semibold mb-8">Exclusive Bundles</h3>
@@ -118,17 +58,6 @@
         <a href="#view-all-bundles" class="text-blue-600 font-semibold mt-6 inline-block">See All Bundles</a>
     </div>
     
-    <!-- Category Selection -->
-    <!-- <div class="mt-6 text-center">
-        <h2 class="text-lg font-semibold">Scroll & choose a category to explore the menu</h2>
-        <div class="flex space-x-4 mt-4 overflow-x-auto px-4">
-            <button class="bg-white shadow-md px-4 py-2 rounded-lg">Drinks</button>
-            <button class="bg-white shadow-md px-4 py-2 rounded-lg">Burger</button>
-            <button class="bg-white shadow-md px-4 py-2 rounded-lg">Snacks</button>
-            <button class="bg-white shadow-md px-4 py-2 rounded-lg">Meat</button>
-            <button class="bg-white shadow-md px-4 py-2 rounded-lg">Sides</button>
-        </div>
-    </div> -->
 
     <!-- Food Items Grid -->
     <h3 class="text-3xl font-semibold mt-6 mb-8">Featured Menu Items</h3>
@@ -174,28 +103,6 @@
             <!-- <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button> -->
         </div>
         
-        
-        <!-- <div class="bg-white p-4 shadow-md rounded-lg text-center">
-            <img src="/Cheeseburger.jpg" alt="Food Item" class="w-full h-auto object-cover rounded-md">
-            <h3 class="mt-2 font-semibold">Desserts</h3>
-            <p class="text-blue-600 font-bold">$12.99</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
-        </div>
-        
-        <div class="bg-white p-4 shadow-md rounded-lg text-center">
-            <img src="/Cheeseburger.jpg" alt="Food Item" class="w-full h-auto object-cover rounded-md">
-            <h3 class="mt-2 font-semibold">Burger Steak</h3>
-            <p class="text-blue-600 font-bold">$10.99</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
-        </div>
-        
-        <div class="bg-white p-4 shadow-md rounded-lg text-center">
-            <img src="/Cheeseburger.jpg" alt="Food Item" class="w-full h-auto object-cover rounded-md">
-            <h3 class="mt-2 font-semibold">Super Meals</h3>
-            <p class="text-blue-600 font-bold">$8.99</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
-        </div> -->
-
         
     </div>
 

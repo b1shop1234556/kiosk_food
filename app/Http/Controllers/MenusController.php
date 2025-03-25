@@ -99,8 +99,12 @@ class MenusController extends Controller
 
     public function menu()
     {
+        // Fetch all menus and unique categories
         $menus = Menus::all();  
-        return view('menus.menu', compact('menus')); 
+        $categories = Menus::select('category')->distinct()->get(); // Get unique categories
+        
+        return view('menus.menu', compact('menus', 'categories')); 
     }
+    
     
 }

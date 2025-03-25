@@ -10,7 +10,7 @@
 
     <!-- Header -->
     <nav class="bg-blue-100 w-full p-4 shadow-md flex justify-between items-center text-white">
-        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome, Dionece</h1>
+        <h1 class="text-2xl text-red-500 font-bold ml-2">Welcome</h1>
         <div class="flex space-x-2">
             <a href="{{ url('/order') }}" class="bg-red-500 px-2 py-1 rounded-lg font-semibold flex items-center">
             <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">

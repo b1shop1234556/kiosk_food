@@ -5,20 +5,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\MenusController;
+use App\Http\Controllers\CartController;
 // use App\Models\Task;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/greetings', function () {
-//     return view('greetings');
-// });
+Route::get('logins', function () {
+    return view('login');
+});
 
-// Route::get('/greetings', function () {
-//     $name = "Juan dela Cruz";
-//     return view('greetings', compact('name'));
-// });
+Route::get('/signups', function () {
+    return view('signup');
+});
 
 Route::get('/greetings', function () {
     $name = "Juan dela Cruz";
@@ -44,19 +44,16 @@ Route::resource('rooms',RoomController::class);
 Route::get('/rooms/{room}/edit',[RoomController::class,'edit'])->name('rooms.edit');
 Route::get('/rooms/{room}',[RoomController::class,'update'])->name('rooms.update');
 
-// Route::get('/tasks', function () {
-//     return view('tasks', ['tasks' => Task::all()]);
-// });
 
 Route::resource('foods',FoodController::class);
 Route::get('/foods/{food}/edit',[FoodController::class,'edit'])->name('foods.edit');
 Route::get('/foods/{food}',[FoodController::class,'update'])->name('foods.update');
 
-Route::get('/order',[FoodController::class,'order']);
+// Route::get('/order',[FoodController::class,'order']);
 Route::get('/payment',[FoodController::class,'payment']);
-Route::get('/menu',[FoodController::class,'menu']);
+// Route::get('/menu',[FoodController::class,'menu']);
 
-Route::get('/menu', [FoodController::class, 'index'])->name('menu');
+// Route::get('/menu', [FoodController::class, 'index'])->name('menu');
 
 Route::resource('menus',MenusController::class);
 Route::get('/menus', [MenuItemController::class, 'index']);
@@ -64,3 +61,8 @@ Route::get('/menus', [MenuItemController::class, 'index']);
 Route::get('/order',[MenusController::class,'order']);
 Route::get('/payment',[MenusController::class,'payment']);
 Route::get('/menu',[MenusController::class,'menu']);
+
+Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart/add/{menu_item_id}', [CartController::class, 'addToCart']);
+Route::post('/cart/update/{id}', [CartController::class, 'updateCart']);
+Route::post('/cart/remove/{id}', [CartController::class, 'removeFromCart']);

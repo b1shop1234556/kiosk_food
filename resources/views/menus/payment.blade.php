@@ -51,15 +51,14 @@
             <img src="/google.png"  alt="Google Pay">
             <p>Google Pay</p>
         </div>
-    </div>
 
-    <div class="mt-6 w-full max-w-2xl px-4">
+        <div class="mt-6 w-full max-w-2xl px-4">
         <!-- <h2 class="text-lg font-semibold text-center">Payment Options</h2> -->
         <div class="p-4 rounded-lg mt-4">
             <div class="flex justify-center">
                 <a href="{{ url('/order') }}" class="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">Back to Order</a>
             </div>
         </div>
-    </div>
+    </div> 
 </body>
 </html>
