@@ -15,8 +15,8 @@ class Transactions extends Model
 
     protected $fillable = [
         'order',
-        'payment_method ',
-        'payment_status ',
+        'payment_method',
+        'payment_status',
     ];
     //
 }

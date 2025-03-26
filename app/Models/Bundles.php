@@ -11,7 +11,7 @@ class Bundles extends Model
 
     protected $table = 'bundles';
     
-    protected $primaryKey = 'bundle_id ';
+    protected $primaryKey = 'bundle_id';
 
     protected $fillable = [
         'menu_item_id',
